@@ -8,7 +8,7 @@ Connect Cursor to your [Hex](https://hex.tech) workspace through the Model Conte
 
 Install this plugin from the Cursor Marketplace. After installation, you'll be prompted to authenticate with your Hex account via OAuth.
 
-> **Tip:** For single tenant, EU multi-tenant, or HIPAA customers, you may need to configure a custom Hex URL (e.g., `your-company.hex.tech`, `eu.hex.tech`, `hc.hex.tech`).
+> **Tip:** For single tenant, EU multi-tenant, or HIPAA customers, you may need to configure a custom Hex URL (e.g., `your-company.hex.tech/mcp`, `eu.hex.tech/mcp`, `hc.hex.tech/mcp`).
 
 ## What This Plugin Provides
 
@@ -57,6 +57,9 @@ Continues the existing Thread conversation.
 
 - Only text-based prompts are supported (no file uploads)
 - Threads typically take several minutes to complete
+
+## Future Improvements
+We are looking to expand our plugin offering, if you have any ideas or feedback, please let us know by emailing support@hex.tech.
 
 ## Resources
 
