@@ -65,7 +65,3 @@ We are looking to expand our plugin offering, if you have any ideas or feedback,
 
 - [Hex MCP Server Documentation](https://learn.hex.tech/docs/administration/mcp-server)
 - [Hex Support](mailto:support@hex.tech)
-
-## License
-
-MIT
