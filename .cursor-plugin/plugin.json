@@ -4,8 +4,8 @@
   "description": "MCP server integration for Hex - connect Cursor to your Hex workspace for data analysis and notebook collaboration",
   "author": {
     "name": "Hex",
-    "email": "support@hex.tech",
-    "url": "https://hex.tech"
+    "email": "support@hex.tech"
   },
+  "logo": "assets/logo.png",
   "keywords": ["hex", "mcp", "data", "analytics", "notebooks"]
 }
