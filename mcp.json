@@ -1,9 +1,8 @@
 {
-  "hex": {
-    "command": "npx",
-    "args": ["mcp-remote", "https://app.hex.tech/mcp", "--header", "user-agent:${USER_AGENT}"],
-    "env": {
-      "USER_AGENT": "hex-cursor-plugin/1.0.0"
+  "mcpServers": {
+    "hex": {
+      "type": "http",
+      "url": "https://app.hex.tech/mcp"
     }
   }
 }
