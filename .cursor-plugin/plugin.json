@@ -1,7 +1,7 @@
 {
   "name": "hex",
   "version": "1.0.0",
-  "description": "AI analytics and notebook collaboration - connect Cursor to your Hex workspace with MCP",
+  "description": "AI analytics and data collaboration - connect Cursor to your Hex workspace with MCP",
   "author": {
     "name": "Hex",
     "email": "support@hex.tech"
