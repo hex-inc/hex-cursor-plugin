@@ -12,7 +12,7 @@ Install this plugin from the Cursor Marketplace. After installation, you'll be p
 
 ## What This Plugin Provides
 
-This plugin adds Hex MCP tools and a canvas-building skill to Cursor.
+This plugin adds Hex MCP tools and agent skills to Cursor.
 
 ### MCP Tools
 
@@ -23,10 +23,12 @@ This plugin adds Hex MCP tools and a canvas-building skill to Cursor.
 | `get_thread` | Retrieve messages and results from a Thread |
 | `continue_thread` | Add follow-up questions to an existing Thread |
 
-### Skill
+### Skills
 
 | Skill | Description |
 |-------|-------------|
+| `hex-business-analytics-question` | Searches existing Hex projects and uses Hex Agent threads when needed to answer business analytics questions. |
+| `hex-notebook-authoring` | Guides local-first Hex notebook and project authoring through the Hex CLI. |
 | `hex-thread-to-canvas` | Prompts Hex Threads for exact, source-backed KPI values and uses them to build a Cursor canvas with clear citations and caveats. |
 
 ## Usage Examples

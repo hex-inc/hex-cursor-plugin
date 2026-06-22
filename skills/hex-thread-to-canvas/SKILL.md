@@ -5,7 +5,7 @@ description: Use Hex Threads through the Hex MCP search_projects/create_thread/g
 
 # Hex Thread to Cursor Canvas
 
-Turn a Hex Threads analysis into a Cursor canvas. Hex replies often start as narrative summaries, such as "trending up" or "in a 35-50% band", with charts that live inside Hex. A canvas needs exact values embedded inline. This skill makes you ask for concrete numbers up front, verify them, and only then build the canvas.
+Use this skill to turn a Hex Threads analysis into a Cursor canvas. Hex replies often start as narrative summaries, such as "trending up" or "in a 35-50% band", with charts that live inside Hex. A canvas needs exact values embedded inline, so ask for concrete numbers up front, verify them, and only then build the canvas.
 
 ## Workflow
 
@@ -101,3 +101,15 @@ Carry caveats from Hex into the canvas honestly:
 - **Keep caveats visible.** Do not present preliminary, sparse, future-period, or timezone-sensitive data as settled.
 - **Use one canvas file.** Build a single `.canvas.tsx` file and import only from `cursor/canvas`.
 - **Keep data lineage clear.** Each chart, stat, or table must have enough caption/source context for a reviewer to trace the number back to Hex or local context.
+
+## Expected Tools
+
+The Hex app currently exposes tools such as `search_projects`, `create_thread`, `get_thread`, and `continue_thread`. Canvas construction should use Cursor canvas APIs and follow any available canvas-specific skill or project guidance. Tool availability can vary by workspace permissions and server-side rollout state.
+
+## Common Triggers
+
+- "Build a canvas from this Hex dashboard."
+- "Use Hex Agent to get exact KPI values for a Cursor canvas."
+- "Pull the latest metrics from Hex and combine them with this branch."
+- "Turn this Hex Thread into a dashboard."
+- "Make a canvas with Hex numbers, sources, and caveats."
