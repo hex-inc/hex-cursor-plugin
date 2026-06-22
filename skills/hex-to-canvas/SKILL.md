@@ -1,5 +1,5 @@
 ---
-name: hex-thread-to-canvas
+name: hex-to-canvas
 description: Use Hex Threads through the Hex MCP search_projects/create_thread/get_thread/continue_thread tools to get concrete, canvas-ready metric values from Hex projects or dashboards, then build a Cursor canvas that can combine those figures with local repo, git, or other MCP context. Use when querying Hex for KPIs, data analysis, metrics, trends, dashboard values, or when blending Hex data with local information into a Cursor canvas or structured dashboard.
 ---
 
