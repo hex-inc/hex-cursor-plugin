@@ -1,11 +1,29 @@
 ---
 name: hex-to-canvas
-description: Use Hex Threads through the Hex MCP search_projects/create_thread/get_thread/continue_thread tools to get concrete, canvas-ready metric values from Hex projects or dashboards, then build a Cursor canvas that can combine those figures with local repo, git, or other MCP context. Use when querying Hex for KPIs, data analysis, metrics, trends, dashboard values, or when blending Hex data with local information into a Cursor canvas or structured dashboard.
+description: Use ONLY when the user explicitly asks to build a Cursor canvas or dashboard from Hex data. This skill gets concrete, canvas-ready metric values from Hex Threads (search_projects/create_thread/get_thread/continue_thread) and builds a Cursor canvas, optionally blending in local repo, git, or other MCP context. Do NOT use this skill for ordinary Hex data questions, KPI lookups, or analysis where the user only wants an answer and did not ask for a canvas or dashboard.
 ---
 
 # Hex Thread to Cursor Canvas
 
 Use this skill to turn a Hex Threads analysis into a Cursor canvas. Hex replies often start as narrative summaries, such as "trending up" or "in a 35-50% band", with charts that live inside Hex. A canvas needs exact values embedded inline, so ask for concrete numbers up front, verify them, and only then build the canvas.
+
+## When to use this skill
+
+This skill is opt-in. Only build a canvas when the user explicitly asks for one. Using the Hex MCP or asking a data question is **not** by itself a request for a canvas.
+
+Use this skill when the user clearly wants a canvas or dashboard artifact, for example:
+
+- "Build a canvas from this Hex dashboard."
+- "Turn this Hex thread into a dashboard/canvas."
+- "Make me a canvas with these KPIs and sources."
+
+Do **not** use this skill, and do not create a canvas, when the user only wants an answer or analysis, for example:
+
+- "What were our top-selling products last quarter?"
+- "Pull the latest activation rate from Hex."
+- "Do we have a dashboard about churn?"
+
+For those, answer directly or use the `hex-business-analytics-question` skill. If a data question seems like it might benefit from a canvas but the user did not ask for one, answer first and, at most, offer to build a canvas — do not build one unprompted.
 
 ## Workflow
 

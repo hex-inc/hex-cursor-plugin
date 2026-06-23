@@ -29,7 +29,7 @@ This plugin adds Hex MCP tools and agent skills to Cursor.
 |-------|-------------|
 | `hex-business-analytics-question` | Searches existing Hex projects and uses Hex Agent threads when needed to answer business analytics questions. |
 | `hex-notebook-authoring` | Guides local-first Hex notebook and project authoring through the Hex CLI. |
-| `hex-to-canvas` | Prompts Hex Threads for exact, source-backed KPI values and uses them to build a Cursor canvas with clear citations, caveats, and a footer link back to the source Hex thread. |
+| `hex-to-canvas` | Opt-in: only when you explicitly ask for a canvas. Prompts Hex Threads for exact, source-backed KPI values and builds a Cursor canvas with clear citations, caveats, and a footer link back to the source Hex thread. |
 
 ## Usage Examples
 
