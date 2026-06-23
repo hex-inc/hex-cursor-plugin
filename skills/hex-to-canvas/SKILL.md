@@ -1,11 +1,29 @@
 ---
 name: hex-to-canvas
-description: Use Hex Threads through the Hex MCP search_projects/create_thread/get_thread/continue_thread tools to get concrete, canvas-ready metric values from Hex projects or dashboards, then build a Cursor canvas that can combine those figures with local repo, git, or other MCP context. Use when querying Hex for KPIs, data analysis, metrics, trends, dashboard values, or when blending Hex data with local information into a Cursor canvas or structured dashboard.
+description: Use ONLY when the user explicitly asks to build a Cursor canvas or dashboard from Hex data. This skill gets concrete, canvas-ready metric values from Hex Threads (search_projects/create_thread/get_thread/continue_thread) and builds a Cursor canvas, optionally blending in local repo, git, or other MCP context. Do NOT use this skill for ordinary Hex data questions, KPI lookups, or analysis where the user only wants an answer and did not ask for a canvas or dashboard.
 ---
 
 # Hex Thread to Cursor Canvas
 
 Use this skill to turn a Hex Threads analysis into a Cursor canvas. Hex replies often start as narrative summaries, such as "trending up" or "in a 35-50% band", with charts that live inside Hex. A canvas needs exact values embedded inline, so ask for concrete numbers up front, verify them, and only then build the canvas.
+
+## When to use this skill
+
+This skill is opt-in. Only build a canvas when the user explicitly asks for one. Using the Hex MCP or asking a data question is **not** by itself a request for a canvas.
+
+Use this skill when the user clearly wants a canvas or dashboard artifact, for example:
+
+- "Build a canvas from this Hex dashboard."
+- "Turn this Hex thread into a dashboard/canvas."
+- "Make me a canvas with these KPIs and sources."
+
+Do **not** use this skill, and do not create a canvas, when the user only wants an answer or analysis, for example:
+
+- "What were our top-selling products last quarter?"
+- "Pull the latest activation rate from Hex."
+- "Do we have a dashboard about churn?"
+
+For those, answer directly or use the `hex-business-analytics-question` skill. If a data question seems like it might benefit from a canvas but the user did not ask for one, answer first and, at most, offer to build a canvas — do not build one unprompted.
 
 ## Workflow
 
@@ -16,6 +34,7 @@ Use this skill to turn a Hex Threads analysis into a Cursor canvas. Hex replies 
 5. **Poll for completion.** Call `get_thread` until the thread is idle or complete. Hex Threads can take several minutes; share the thread URL with the user when useful.
 6. **Verify the numbers.** Confirm the response contains exact values, periods, source names, and numerator/denominator counts for rates. If anything is missing or only qualitative, call `continue_thread` for the specific missing values. Do not infer or fabricate.
 7. **Build the canvas.** Create one `.canvas.tsx` file using the Cursor canvas APIs. Embed the verified values inline, and cite sources in captions: Hex thread URL, Hex project/dashboard title, source table/model name, as-of date, and any local file paths or commit SHAs used.
+8. **Link the source thread.** Always finish the canvas with a footer that links to the Hex thread conversation the canvas was generated from. See [Always link the source Hex thread](#always-link-the-source-hex-thread).
 
 ## Canvas-ready prompt template
 
@@ -93,10 +112,34 @@ Carry caveats from Hex into the canvas honestly:
 - Full metric list with periods and sources -> `Table` with numeric columns right-aligned.
 - Narrative recommendations -> short `Card` components and a `Callout tone="info"` takeaway.
 - Source and caveat details -> captions or a compact methodology card.
+- Source thread link -> a footer `Card` with a `Link` to the Hex thread conversation (always include this).
+
+## Always link the source Hex thread
+
+Every canvas built from a Hex thread must end with a footer that links back to the Hex thread conversation it was generated from. This keeps the canvas auditable: a reviewer can open the original thread to see the full analysis, the exact prompts used, and any follow-up questions.
+
+- Place the link in a dedicated footer at the very bottom of the canvas, after all stats, charts, tables, and narrative cards.
+- Use the thread URL returned by `create_thread`/`get_thread` (for example the thread's `url` or `appUrl`). Never fabricate or guess the URL; if you do not have it, call `get_thread` to retrieve it before finishing the canvas.
+- Label the link clearly, for example "Generated from Hex thread" or "View the source Hex thread conversation", so its purpose is obvious.
+- If the canvas blended multiple Hex threads, link each source thread in the footer.
+- If a value or chart came from an existing Hex project or dashboard rather than the thread, still keep the thread link in the footer and add the project/dashboard link alongside it.
+
+A simple footer card works well:
+
+```tsx
+<Card>
+  <Text>
+    Generated from{" "}
+    <Link href={hexThreadUrl}>this Hex thread conversation</Link>
+    {" "}· as of {asOfDate}
+  </Text>
+</Card>
+```
 
 ## Rules
 
 - **Never invent numbers.** If a value is not in the Hex thread response, ask for it with `continue_thread` or omit that canvas element.
+- **Always link the source thread.** Every canvas must end with a footer linking to the Hex thread conversation it was generated from. Use the real thread URL; never guess it.
 - **Do not build from qualitative summaries alone.** Terms like "up", "down", "strong", "weak", "roughly", or "about" are not canvas-ready unless paired with exact values and periods.
 - **Keep caveats visible.** Do not present preliminary, sparse, future-period, or timezone-sensitive data as settled.
 - **Use one canvas file.** Build a single `.canvas.tsx` file and import only from `cursor/canvas`.
