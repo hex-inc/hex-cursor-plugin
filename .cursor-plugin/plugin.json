@@ -7,5 +7,6 @@
     "email": "support@hex.tech"
   },
   "logo": "assets/logo.png",
-  "keywords": ["hex", "mcp", "data", "analytics", "notebooks"]
+  "keywords": ["hex", "mcp", "data", "analytics", "notebooks"],
+  "capabilities": ["canvas"]
 }
