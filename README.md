@@ -36,17 +36,9 @@ Start a new chat and ask Cursor to use Hex. For example:
 
 The Hex MCP server supplies Cursor with tools and instructions for using them. Available actions depend on your workspace's enabled features and your permissions. See the [Hex MCP server documentation](https://learn.hex.tech/docs/api-integrations/mcp-server) for details.
 
-## Included skills
+## Hex to canvas
 
-The plugin includes skills for common Hex workflows:
-
-| Skill | Use it to |
-|-------|-----------|
-| [Business analytics questions](skills/hex-business-analytics-question/SKILL.md) | Find existing analyses and ask Hex Agent questions about your data. |
-| [Notebook authoring](skills/hex-notebook-authoring/SKILL.md) | Create and edit Hex notebooks with the Hex CLI. |
-| [Hex to canvas](skills/hex-to-canvas/SKILL.md) | Build Cursor canvases from metrics in Hex. |
-
-The notebook authoring skill uses the Hex CLI. Install it and sign in separately by following the [Hex CLI setup instructions](https://learn.hex.tech/docs/api-integrations/cli).
+The plugin includes the [Hex to canvas skill](skills/hex-to-canvas/SKILL.md) to build Cursor canvases from metrics in Hex.
 
 ## Access and permissions
 
@@ -55,5 +47,4 @@ Your Hex workspace role, project permissions, and data connection access apply w
 ## Resources
 
 - [Hex MCP server documentation](https://learn.hex.tech/docs/api-integrations/mcp-server)
-- [Hex CLI documentation](https://learn.hex.tech/docs/api-integrations/cli)
 - [Hex support](mailto:support@hex.tech)
