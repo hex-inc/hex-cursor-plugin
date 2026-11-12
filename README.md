@@ -1,20 +1,35 @@
-# Hex MCP Plugin
+# Hex MCP plugin
 
 Connect Cursor to your [Hex](https://hex.tech) workspace through the Model Context Protocol (MCP).
 
-> **Note:** Hex MCP Server is currently in beta and requires a Hex Team or Enterprise plan.
+> **Note:** The Hex MCP server is in beta and requires a Hex Team or Enterprise plan.
 
 ## Installation
 
-Install this plugin from the Cursor Marketplace. After installation, you'll be prompted to authenticate with your Hex account via OAuth.
+Install the [Hex plugin](https://cursor.com/marketplace/hex) from the Cursor Marketplace. If your workspace uses a custom Hex URL, configure it as described below before signing in. Connect to Hex in Cursor and sign in to your Hex account through OAuth.
 
-> **Tip:** For single tenant, EU multi-tenant, or HIPAA customers, you may need to configure a custom Hex URL (e.g., `your-company.hex.tech/mcp`, `eu.hex.tech/mcp`, `hc.hex.tech/mcp`).
+### Configure a custom Hex URL
 
-## What This Plugin Provides
+The default MCP URL is `https://app.hex.tech/mcp`. If your workspace uses a different address, set **Hex MCP URL** before connecting:
+
+1. In the Cursor dashboard, open **Plugins**, find **Hex**, and select **Configure**.
+2. Enter your workspace's full HTTPS MCP URL, including `/mcp`.
+3. Save your changes, then connect to Hex in Cursor and sign in to your Hex account.
+
+| Workspace | Example MCP URL |
+|-----------|-----------------|
+| EU multi-tenant | `https://eu.hex.tech/mcp` |
+| HIPAA multi-tenant | `https://hc.hex.tech/mcp` |
+| Single-tenant | `https://your-company.hex.tech/mcp` |
+| Customer-owned domain | `https://hex.example.com/mcp` |
+
+For team installations, a Cursor team Admin configures this value. See [Cursor's plugin variables documentation](https://cursor.com/docs/reference/plugins#variables) for details.
+
+## What this plugin provides
 
 This plugin adds Hex MCP tools and agent skills to Cursor.
 
-### MCP Tools
+### MCP tools
 
 | Tool | Description |
 |------|-------------|
@@ -31,9 +46,9 @@ This plugin adds Hex MCP tools and agent skills to Cursor.
 | `hex-notebook-authoring` | Guides local-first Hex notebook and project authoring through the Hex CLI. |
 | `hex-to-canvas` | Prompts Hex Threads for exact, source-backed KPI values and uses them to build a Cursor canvas with clear citations and caveats. |
 
-## Usage Examples
+## Usage examples
 
-### Search for Projects
+### Search for projects
 
 ```
 Do we have any projects about customer segmentation?
@@ -41,7 +56,7 @@ Do we have any projects about customer segmentation?
 
 Returns project titles, descriptions, summaries, and direct links.
 
-### Ask Data Questions
+### Ask data questions
 
 ```
 What were our top-selling products last quarter?
@@ -49,7 +64,7 @@ What were our top-selling products last quarter?
 
 Creates a Thread that analyzes your data and returns insights, charts, and a link to view the full analysis in Hex.
 
-### Follow-up Questions
+### Follow-up questions
 
 ```
 Can you break that down by sales channel?
@@ -57,7 +72,7 @@ Can you break that down by sales channel?
 
 Continues the existing Thread conversation.
 
-### Build a Canvas from Hex Metrics
+### Build a canvas from Hex metrics
 
 ```
 Use Hex to pull the latest activation KPIs from our onboarding dashboard and build a canvas that compares them with this branch's recent product changes.
@@ -67,19 +82,16 @@ Uses the `hex-to-canvas` skill to request exact values, periods, rate denominato
 
 ## Requirements
 
-- **Hex Plan**: Team or Enterprise
-- **Workspace Role**: Explorer or higher (for `create_thread` and `continue_thread`)
-- **Data Connection**: A default data connection must be configured in your Hex workspace
+- **Hex plan**: Team or Enterprise
+- **Workspace role**: Explorer or higher (for `create_thread` and `continue_thread`)
+- **Data connection**: A default data connection must be configured in your Hex workspace
 
 ## Limitations
 
 - Only text-based prompts are supported (no file uploads)
 - Threads typically take several minutes to complete
 
-## Future Improvements
-We are looking to expand our plugin offering, if you have any ideas or feedback, please let us know by emailing support@hex.tech.
-
 ## Resources
 
-- [Hex MCP Server Documentation](https://learn.hex.tech/docs/administration/mcp-server)
-- [Hex Support](mailto:support@hex.tech)
+- [Hex MCP server documentation](https://learn.hex.tech/docs/api-integrations/mcp-server)
+- [Hex support](mailto:support@hex.tech)
